@@ -33,7 +33,7 @@ const source_base_path_3 = core.getInput('source_base_path_3', {required: false}
 options['source_base_path_3'] = source_base_path_3
 
 const debugValue = core.getInput('debug', {required: false} );
-options['DEBUG'] = debugValue
+options['DEBUG'] = debugValue.toLowerCase() === 'true';
 
 const language = core.getInput('language', {required: false} );
 options['language'] = language
