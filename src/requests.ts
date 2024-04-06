@@ -94,7 +94,6 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         })
         .catch(error => {
             console.error('Error fetching fixes:', error);
-            scheduleNextRequest();
         });
     }
 

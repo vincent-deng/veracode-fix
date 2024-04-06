@@ -36228,7 +36228,7 @@ options['source_base_path_2'] = source_base_path_2;
 const source_base_path_3 = core.getInput('source_base_path_3', { required: false });
 options['source_base_path_3'] = source_base_path_3;
 const debugValue = core.getInput('debug', { required: false });
-options['DEBUG'] = debugValue.toLowerCase() === 'true';
+options['DEBUG'] = debugValue;
 const language = core.getInput('language', { required: false });
 options['language'] = language;
 function selectPlatfrom(creds) {
@@ -36447,7 +36447,6 @@ function checkFix(platform, projectId, options) {
                 })
                     .catch(error => {
                     console.error('Error fetching fixes:', error);
-                    scheduleNextRequest();
                 });
             });
         }
