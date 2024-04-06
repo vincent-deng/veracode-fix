@@ -62,7 +62,7 @@ async function selectPlatfrom(creds:any){
     return requestParameters
 }
 
-async function createTar(initialFlawInfo:any){
+async function createTar(initialFlawInfo:any, options:any){
     console.log('Creating tarball')
     const flawInfo = await createFlawInfo(initialFlawInfo,options)
 
@@ -124,10 +124,10 @@ async function run() {
 
         if ( options.cwe != null && jsonFindings[i].cwe_id == options.cwe ){
             console.log('Only run Fix for CWE: '+options.cwe)
-            if (await checkCWE(initialFlawInfo) == true){
+            if (await checkCWE(initialFlawInfo, options) == true){
 
                 const choosePlatform = await selectPlatfrom(credentials)
-                const tar = await createTar(initialFlawInfo)
+                const tar = await createTar(initialFlawInfo,options)
                 //const uploadTar = await upload(choosePlatform, tar, options)
                 //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }
@@ -137,10 +137,10 @@ async function run() {
         }
         else {
             console.log('Run Fix for all CWEs')
-            if (await checkCWE(initialFlawInfo) == true){
+            if (await checkCWE(initialFlawInfo, options) == true){
 
                 const choosePlatform = await selectPlatfrom(credentials)
-                const tar = await createTar(initialFlawInfo)
+                const tar = await createTar(initialFlawInfo,options)
                 //const uploadTar = await upload(choosePlatform, tar, options)
                 //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }

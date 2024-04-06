@@ -33359,17 +33359,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.checkCWE = void 0;
-function checkCWE(flawInfo) {
+function checkCWE(flawInfo, options) {
     return __awaiter(this, void 0, void 0, function* () {
         if (flawInfo.language == 'java') {
             console.log('CWE check for Java');
             const supportedCWEs = [80, 89, 113, 117, 327, 331, 382, 470, 597, 601];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Java');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('CWE ' + flawInfo.cweID + ' is supported for Java');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.CWE + ' is not supported Java');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.CWE + ' is not supported Java');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
@@ -33377,23 +33387,48 @@ function checkCWE(flawInfo) {
             console.log('CWE check for C#');
             const supportedCWEs = [80, 89, 201, 209, 259, 352, 404, 601, 611, 798];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for csharp');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for csharp');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported sharp');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported sharp');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
         else if (flawInfo.language == 'javascript') {
-            console.log('CWE check for JavaScript');
+            if (options.DEBUG == true) {
+                console.log('#######- DEBUG MODE -#######');
+                console.log('check_cwe_support.ts');
+                console.log('CWE check for JavaScript');
+                console.log('#######- DEBUG MODE -#######');
+            }
             const supportedCWEs = [73, 78, 80, 113, 117, 327, 611, 614];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for JavaScript');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for JavaScript');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported JavaScript');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported JavaScript');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
@@ -33401,11 +33436,21 @@ function checkCWE(flawInfo) {
             console.log('CWE check for Python');
             const supportedCWEs = [73, 78, 80, 89, 295, 327, 331, 601, 757];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Python');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Python');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Python');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Python');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
@@ -33413,11 +33458,21 @@ function checkCWE(flawInfo) {
             console.log('CWE check for PHP');
             const supportedCWEs = [73, 80, 89, 117];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for PHP');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for PHP');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported PHP');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported PHP');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
@@ -33425,11 +33480,21 @@ function checkCWE(flawInfo) {
             console.log('CWE check for Scala');
             const supportedCWEs = [78, 80, 89, 117, 611];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Scala');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Scala');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Scala');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Scala');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
@@ -33437,11 +33502,21 @@ function checkCWE(flawInfo) {
             console.log('CWE check for Kotlin');
             const supportedCWEs = [80, 89, 113, 117, 331];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Kotlin');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Kotlin');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return true;
             }
             else {
-                console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Kotlin');
+                if (options.DEBUG == true) {
+                    console.log('#######- DEBUG MODE -#######');
+                    console.log('check_cwe_support.ts');
+                    console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Kotlin');
+                    console.log('#######- DEBUG MODE -#######');
+                }
                 return false;
             }
         }
@@ -33712,7 +33787,7 @@ function selectPlatfrom(creds) {
         return requestParameters;
     });
 }
-function createTar(initialFlawInfo) {
+function createTar(initialFlawInfo, options) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Creating tarball');
         const flawInfo = yield (0, createFlawInfo_1.createFlawInfo)(initialFlawInfo, options);
@@ -33764,9 +33839,9 @@ function run() {
             console.log(initialFlawInfo);
             if (options.cwe != null && jsonFindings[i].cwe_id == options.cwe) {
                 console.log('Only run Fix for CWE: ' + options.cwe);
-                if ((yield (0, check_cwe_support_1.checkCWE)(initialFlawInfo)) == true) {
+                if ((yield (0, check_cwe_support_1.checkCWE)(initialFlawInfo, options)) == true) {
                     const choosePlatform = yield selectPlatfrom(credentials);
-                    const tar = yield createTar(initialFlawInfo);
+                    const tar = yield createTar(initialFlawInfo, options);
                     //const uploadTar = await upload(choosePlatform, tar, options)
                     //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
                 }
@@ -33776,9 +33851,9 @@ function run() {
             }
             else {
                 console.log('Run Fix for all CWEs');
-                if ((yield (0, check_cwe_support_1.checkCWE)(initialFlawInfo)) == true) {
+                if ((yield (0, check_cwe_support_1.checkCWE)(initialFlawInfo, options)) == true) {
                     const choosePlatform = yield selectPlatfrom(credentials);
-                    const tar = yield createTar(initialFlawInfo);
+                    const tar = yield createTar(initialFlawInfo, options);
                     //const uploadTar = await upload(choosePlatform, tar, options)
                     //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
                 }
