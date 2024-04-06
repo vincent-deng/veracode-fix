@@ -33361,6 +33361,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.checkCWE = void 0;
 function checkCWE(flawInfo, options) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log('Checking CWE support');
+        console.log('Options:');
+        console.log(options);
         if (flawInfo.language == 'java') {
             console.log('CWE check for Java');
             const supportedCWEs = [80, 89, 113, 117, 327, 331, 382, 470, 597, 601];
@@ -33822,21 +33825,23 @@ function run() {
         const jsonRead = fs_1.default.readFileSync(options.file, 'utf8');
         const jsonData = JSON.parse(jsonRead);
         const jsonFindings = jsonData.findings;
-        console.log('JSON data');
-        //console.log(jsonFindings)
         const flawCount = jsonFindings.length;
         //loop through json file
         let i = 0;
         for (i = 0; i < flawCount; i++) {
-            console.log('Flaw number: ' + i);
             const initialFlawInfo = {
                 resultsFile: options.file,
                 issuedID: jsonFindings[i].issue_id,
                 cweID: parseInt(jsonFindings[i].cwe_id),
                 language: options.language,
             };
-            console.log('Initial Flaw Info');
-            console.log(initialFlawInfo);
+            if (options.DEBUG == true) {
+                console.log('#######- DEBUG MODE -#######');
+                console.log('index.ts - run()');
+                console.log('Initial Flaw Info');
+                console.log(initialFlawInfo);
+                console.log('#######- DEBUG MODE -#######');
+            }
             if (options.cwe != null && jsonFindings[i].cwe_id == options.cwe) {
                 console.log('Only run Fix for CWE: ' + options.cwe);
                 if ((yield (0, check_cwe_support_1.checkCWE)(initialFlawInfo, options)) == true) {
@@ -33846,7 +33851,7 @@ function run() {
                     //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
                 }
                 else {
-                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported');
+                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported ' + options.language);
                 }
             }
             else {
@@ -33858,7 +33863,7 @@ function run() {
                     //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
                 }
                 else {
-                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported');
+                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported for ' + options.language);
                 }
             }
             i++;

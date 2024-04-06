@@ -101,16 +101,11 @@ async function run() {
     const jsonRead = fs.readFileSync(options.file, 'utf8')
     const jsonData = JSON.parse(jsonRead);
     const jsonFindings = jsonData.findings
-
-    console.log('JSON data')
-    //console.log(jsonFindings)
-
     const flawCount = jsonFindings.length
 
     //loop through json file
     let i = 0
     for (i = 0; i < flawCount; i++) {
-        console.log('Flaw number: '+i)
 
         const initialFlawInfo = {
             resultsFile: options.file,
@@ -119,8 +114,14 @@ async function run() {
             language: options.language,
         }
 
-        console.log('Initial Flaw Info')
-        console.log(initialFlawInfo)
+        if (options.DEBUG == true){
+            console.log('#######- DEBUG MODE -#######')
+            console.log('index.ts - run()')
+            console.log('Initial Flaw Info')
+            console.log(initialFlawInfo)
+            console.log('#######- DEBUG MODE -#######')
+        }
+        
 
         if ( options.cwe != null && jsonFindings[i].cwe_id == options.cwe ){
             console.log('Only run Fix for CWE: '+options.cwe)
@@ -132,7 +133,7 @@ async function run() {
                 //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }
             else {
-                console.log('CWE '+initialFlawInfo.cweID+' is not supported')
+                console.log('CWE '+initialFlawInfo.cweID+' is not supported '+options.language)
             }
         }
         else {
@@ -145,7 +146,7 @@ async function run() {
                 //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }
             else {
-                console.log('CWE '+initialFlawInfo.cweID+' is not supported')
+                console.log('CWE '+initialFlawInfo.cweID+' is not supported for '+options.language)
             }
         }
         i++
