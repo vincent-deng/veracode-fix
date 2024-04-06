@@ -100,7 +100,7 @@ async function run() {
     const jsonFindings = jsonData.findings
 
     console.log('JSON data')
-    console.log(jsonFindings)
+    //console.log(jsonFindings)
 
     const flawCount = jsonFindings.length
 
@@ -114,6 +114,9 @@ async function run() {
             issuedID: jsonFindings[i].issue_id,
             cweID: jsonFindings[i].cwe_id
         }
+
+        console.log('Initial Flaw Info')
+        console.log(initialFlawInfo)
 
         if ( options.cwe != null && jsonFindings[i].cwe_id == options.cwe ){
             console.log('Only run Fix for CWE: '+options.cwe)
