@@ -115,7 +115,7 @@ async function run() {
         const initialFlawInfo = {
             resultsFile: options.file,
             issuedID: jsonFindings[i].issue_id,
-            cweID: jsonFindings[i].cwe_id,
+            cweID: parseInt(jsonFindings[i].cwe_id),
             language: options.language,
         }
 
