@@ -102,5 +102,5 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         setTimeout(await makeRequest, 10000);
     }
 
-    makeRequest();
+    await makeRequest();
 }

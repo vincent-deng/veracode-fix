@@ -36456,7 +36456,7 @@ function checkFix(platform, projectId, options) {
                 setTimeout(yield makeRequest, 10000);
             });
         }
-        makeRequest();
+        yield makeRequest();
     });
 }
 exports.checkFix = checkFix;
