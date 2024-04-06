@@ -33677,8 +33677,8 @@ credentials['vkey'] = vkey;
 let options = {};
 const cwe = core.getInput('cwe', { required: false });
 options['cwe'] = cwe;
-const file = core.getInput('file', { required: true });
-options['file'] = file;
+const inputFile = core.getInput('inputFile', { required: true });
+options['file'] = inputFile;
 const source_base_path_1 = core.getInput('source_base_path_1', { required: false });
 options['source_base_path_1'] = source_base_path_1;
 const source_base_path_2 = core.getInput('source_base_path_2', { required: false });
@@ -33687,6 +33687,8 @@ const source_base_path_3 = core.getInput('source_base_path_3', { required: false
 options['source_base_path_3'] = source_base_path_3;
 const debugValue = core.getInput('debug', { required: false });
 options['DEBUG'] = debugValue;
+const language = core.getInput('debug', { required: false });
+options['language'] = language;
 function selectPlatfrom(creds) {
     var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function* () {
@@ -33755,7 +33757,8 @@ function run() {
             const initialFlawInfo = {
                 resultsFile: options.file,
                 issuedID: jsonFindings[i].issue_id,
-                cweID: jsonFindings[i].cwe_id
+                cweID: jsonFindings[i].cwe_id,
+                languaga: options.language,
             };
             console.log('Initial Flaw Info');
             console.log(initialFlawInfo);
@@ -33768,7 +33771,7 @@ function run() {
                     //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
                 }
                 else {
-                    console.log('CWE ' + options.cwe + ' is not supported');
+                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported');
                 }
             }
             else {
@@ -33780,7 +33783,7 @@ function run() {
                     //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
                 }
                 else {
-                    console.log('CWE ' + options.cwe + ' is not supported');
+                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported');
                 }
             }
             i++;

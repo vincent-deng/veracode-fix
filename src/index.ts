@@ -20,8 +20,8 @@ let options:any = {}
 const cwe = core.getInput('cwe', {required: false} );
 options['cwe'] = cwe
 
-const file = core.getInput('file', {required: true} );
-options['file'] = file
+const inputFile = core.getInput('inputFile', {required: true} );
+options['file'] = inputFile
 
 const source_base_path_1 = core.getInput('source_base_path_1', {required: false} );
 options['source_base_path_1'] = source_base_path_1
@@ -34,6 +34,9 @@ options['source_base_path_3'] = source_base_path_3
 
 const debugValue = core.getInput('debug', {required: false} );
 options['DEBUG'] = debugValue
+
+const language = core.getInput('debug', {required: false} );
+options['language'] = language
 
 
 
@@ -112,7 +115,8 @@ async function run() {
         const initialFlawInfo = {
             resultsFile: options.file,
             issuedID: jsonFindings[i].issue_id,
-            cweID: jsonFindings[i].cwe_id
+            cweID: jsonFindings[i].cwe_id,
+            languaga: options.language,
         }
 
         console.log('Initial Flaw Info')
@@ -128,7 +132,7 @@ async function run() {
                 //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }
             else {
-                console.log('CWE '+options.cwe+' is not supported')
+                console.log('CWE '+initialFlawInfo.cweID+' is not supported')
             }
         }
         else {
@@ -141,7 +145,7 @@ async function run() {
                 //const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }
             else {
-                console.log('CWE '+options.cwe+' is not supported')
+                console.log('CWE '+initialFlawInfo.cweID+' is not supported')
             }
         }
         i++
