@@ -98,8 +98,8 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         });
     }
 
-    function scheduleNextRequest() {
-        setTimeout(makeRequest, 10000);
+    async function scheduleNextRequest() {
+        setTimeout(await makeRequest, 10000);
     }
 
     makeRequest();

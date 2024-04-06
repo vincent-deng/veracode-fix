@@ -36452,7 +36452,9 @@ function checkFix(platform, projectId, options) {
             });
         }
         function scheduleNextRequest() {
-            setTimeout(makeRequest, 10000);
+            return __awaiter(this, void 0, void 0, function* () {
+                setTimeout(yield makeRequest, 10000);
+            });
         }
         makeRequest();
     });
