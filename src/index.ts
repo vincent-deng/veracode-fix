@@ -116,7 +116,7 @@ async function run() {
             resultsFile: options.file,
             issuedID: jsonFindings[i].issue_id,
             cweID: jsonFindings[i].cwe_id,
-            languaga: options.language,
+            language: options.language,
         }
 
         console.log('Initial Flaw Info')
