@@ -139,14 +139,14 @@ async function run() {
         else {
             console.log('Run Fix for all CWEs')
             if (await checkCWE(initialFlawInfo, options) == true){
-
+                console.log('CWE '+initialFlawInfo.cweID+' is supported for '+options.language)
                 const choosePlatform = await selectPlatfrom(credentials)
                 const tar = await createTar(initialFlawInfo,options)
                 const uploadTar = await upload(choosePlatform, tar, options)
                 const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
             }
             else {
-                console.log('CWE '+initialFlawInfo.cweID+' is not supported for '+options.language)
+                console.log('CWE '+initialFlawInfo.cweID+' is NOT supported for '+options.language)
             }
         }
         i++

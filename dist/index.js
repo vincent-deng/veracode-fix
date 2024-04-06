@@ -35824,9 +35824,6 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.checkCWE = void 0;
 function checkCWE(flawInfo, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log('Checking CWE support');
-        console.log('Options:');
-        console.log(options);
         if (flawInfo.language == 'java') {
             console.log('CWE check for Java');
             const supportedCWEs = [80, 89, 113, 117, 327, 331, 382, 470, 597, 601];
@@ -36321,13 +36318,14 @@ function run() {
             else {
                 console.log('Run Fix for all CWEs');
                 if ((yield (0, check_cwe_support_1.checkCWE)(initialFlawInfo, options)) == true) {
+                    console.log('CWE ' + initialFlawInfo.cweID + ' is supported for ' + options.language);
                     const choosePlatform = yield selectPlatfrom(credentials);
                     const tar = yield createTar(initialFlawInfo, options);
                     const uploadTar = yield (0, requests_1.upload)(choosePlatform, tar, options);
                     const checkFixResults = yield (0, requests_1.checkFix)(choosePlatform, uploadTar, options);
                 }
                 else {
-                    console.log('CWE ' + initialFlawInfo.cweID + ' is not supported for ' + options.language);
+                    console.log('CWE ' + initialFlawInfo.cweID + ' is NOT supported for ' + options.language);
                 }
             }
             i++;
@@ -36429,7 +36427,7 @@ function checkFix(platform, projectId, options) {
                     console.log(authHeader);
                     console.log('#######- DEBUG MODE -#######');
                 }
-                axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
+                yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
                     headers: {
                         'Authorization': authHeader,
                         'Content-Type': 'application/json'

@@ -77,7 +77,7 @@ export async function checkFix(platform:any, projectId:any, options:any) {
             console.log('#######- DEBUG MODE -#######')
         }
 
-        axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
+        await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
             headers: {
                 'Authorization': authHeader,
                 'Content-Type': 'application/json'

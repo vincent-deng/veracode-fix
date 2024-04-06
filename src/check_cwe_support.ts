@@ -1,7 +1,4 @@
 export async function checkCWE(flawInfo:any, options:any) {
-    console.log('Checking CWE support')
-    console.log('Options:')
-    console.log(options)
     if (flawInfo.language == 'java'){
         console.log('CWE check for Java')
         const supportedCWEs = [80,89,113,117,327,331,382,470,597,601]
