@@ -13,7 +13,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
     //find the correct flaw info from json inout file
     const resultsFile = fs.readFileSync(flawInfo.resultsFile, 'utf8')
     const data = JSON.parse(resultsFile)
-    console.log(flawInfo.issuedID)
+    console.log('Reviewing issueID: '+flawInfo.issuedID)
     const resultArray = data.findings.find((issueId: any) => issueId.issue_id == flawInfo.issuedID)
 
 
