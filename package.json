@@ -1,0 +1,27 @@
+{
+  "name": "veracode-fix-annotations",
+  "version": "0.0.1",
+  "description": "generate annotations for flaws based on Veracode-Fix",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julian Totzek-Hallhuber",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "axios": "^1.6.8",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "sjcl": "^1.0.8",
+    "tar": "^6.2.1",
+    "tar-stream": "^3.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/sjcl": "^1.0.34",
+    "@types/tar": "^6.1.12",
+    "@types/tar-stream": "^3.1.3"
+  }
+}

@@ -1,0 +1,7 @@
+http --auth-type=veracode_hmac -vv -f POST "https://api.veracode.com/fix/v1/project/upload_code" \                    
+data@data.tar.gz \
+name="data"
+
+http --auth-type=veracode_hmac -vv -j GET "https://api.veracode.com/fix/v1/project/PROJECTID/results"
+
+tar -czf data.tar.gz flawInfo UserController.java  

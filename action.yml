@@ -1,0 +1,38 @@
+name: 'Veracode Fix'
+description: 'Fix Veracode Static Findings'
+inputs:
+  vid:
+    description: 'Veracode API ID'
+    required: true
+  vkey:
+    description: 'Veracode API Key'
+    required: true
+  inputFile:
+    description: 'Results file from Veracode'
+    required: false
+    default: 'results.json'
+  cwe:
+    description: 'CWE to fix'
+    required: false
+  source_base_path_1:
+    description: 'Rewrite path 1'
+    required: false
+  source_base_path_2:
+    description: 'Rwrite path 2'
+    required: false
+  source_base_path_3:
+    description: 'Rewrite path 3'
+    required: false
+  debug:
+    description: 'Debug mode'
+    required: false
+    default: 'false'
+  language:
+    description: 'Language'
+    required: false
+    default: 'node'
+    
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
