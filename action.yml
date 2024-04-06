@@ -30,7 +30,6 @@ inputs:
   language:
     description: 'Language'
     required: false
-    default: 'node'
     
 
 runs:

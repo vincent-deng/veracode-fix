@@ -35,7 +35,7 @@ options['source_base_path_3'] = source_base_path_3
 const debugValue = core.getInput('debug', {required: false} );
 options['DEBUG'] = debugValue
 
-const language = core.getInput('debug', {required: false} );
+const language = core.getInput('language', {required: false} );
 options['language'] = language
 
 
