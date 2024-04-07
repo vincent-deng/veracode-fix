@@ -114,6 +114,7 @@ async function run() {
     const jsonData = JSON.parse(jsonRead);
     const jsonFindings = jsonData.findings
     const flawCount = jsonFindings.length
+    console.log('Number of flaws: '+flawCount)
 
     //loop through json file
     let i = 0
