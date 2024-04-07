@@ -12,6 +12,7 @@ export async function createPRComment(results:any, options:any){
 
     core.info('check if we run on a pull request')
     let pullRequest = process.env.GITHUB_REF
+    console.log(pullRequest)
     let isPR:any = pullRequest?.indexOf("pull")
 
     if ( isPR >= 1 ){

@@ -43128,6 +43128,7 @@ function createPRComment(results, options) {
         console.log(splitResults1[0]);
         core.info('check if we run on a pull request');
         let pullRequest = process.env.GITHUB_REF;
+        console.log(pullRequest);
         let isPR = pullRequest === null || pullRequest === void 0 ? void 0 : pullRequest.indexOf("pull");
         if (isPR >= 1) {
             core.info("This run is part of a PR, should add some PR comment");
