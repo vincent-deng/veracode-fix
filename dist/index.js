@@ -36436,7 +36436,10 @@ function checkFix(platform, projectId, options) {
                 //.then(async response => {
                 if (!response.data) {
                     console.log('Response is empty. Retrying in 10 seconds.');
-                    yield scheduleNextRequest();
+                    setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+                        yield makeRequest();
+                    }), 10000);
+                    //await scheduleNextRequest();
                 }
                 else {
                     console.log('Fixes fetched successfully');
@@ -36446,13 +36449,6 @@ function checkFix(platform, projectId, options) {
                 //.catch(error => {
                 //    console.error('Error fetching fixes:', error);
                 //});
-            });
-        }
-        function scheduleNextRequest() {
-            return __awaiter(this, void 0, void 0, function* () {
-                setTimeout(() => __awaiter(this, void 0, void 0, function* () {
-                    yield makeRequest();
-                }), 10000);
             });
         }
         yield makeRequest();

@@ -86,7 +86,10 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         //.then(async response => {
             if (!response.data) {
                 console.log('Response is empty. Retrying in 10 seconds.');
-                await scheduleNextRequest();
+                setTimeout(async () => {
+                    await makeRequest();
+                }, 10000);
+                //await scheduleNextRequest();
             } else {
                 console.log('Fixes fetched successfully');
                 console.log('Response:', response.data);
@@ -95,12 +98,6 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         //.catch(error => {
         //    console.error('Error fetching fixes:', error);
         //});
-    }
-
-    async function scheduleNextRequest() {
-        setTimeout(async () => {
-            await makeRequest();
-        }, 10000);
     }
 
     await makeRequest();
