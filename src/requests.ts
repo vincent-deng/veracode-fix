@@ -77,13 +77,13 @@ export async function checkFix(platform:any, projectId:any, options:any) {
             console.log('#######- DEBUG MODE -#######')
         }
 
-        await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
+        const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
             headers: {
                 'Authorization': authHeader,
                 'Content-Type': 'application/json'
             }
         })
-        .then(async response => {
+        //.then(async response => {
             if (!response.data) {
                 console.log('Response is empty. Retrying in 10 seconds.');
                 await scheduleNextRequest();
@@ -91,10 +91,10 @@ export async function checkFix(platform:any, projectId:any, options:any) {
                 console.log('Fixes fetched successfully');
                 console.log('Response:', response.data);
             }
-        })
-        .catch(error => {
-            console.error('Error fetching fixes:', error);
-        });
+        //})
+        //.catch(error => {
+        //    console.error('Error fetching fixes:', error);
+        //});
     }
 
     async function scheduleNextRequest() {

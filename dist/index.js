@@ -36427,25 +36427,25 @@ function checkFix(platform, projectId, options) {
                     console.log(authHeader);
                     console.log('#######- DEBUG MODE -#######');
                 }
-                yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
+                const response = yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
                     headers: {
                         'Authorization': authHeader,
                         'Content-Type': 'application/json'
                     }
-                })
-                    .then((response) => __awaiter(this, void 0, void 0, function* () {
-                    if (!response.data) {
-                        console.log('Response is empty. Retrying in 10 seconds.');
-                        yield scheduleNextRequest();
-                    }
-                    else {
-                        console.log('Fixes fetched successfully');
-                        console.log('Response:', response.data);
-                    }
-                }))
-                    .catch(error => {
-                    console.error('Error fetching fixes:', error);
                 });
+                //.then(async response => {
+                if (!response.data) {
+                    console.log('Response is empty. Retrying in 10 seconds.');
+                    yield scheduleNextRequest();
+                }
+                else {
+                    console.log('Fixes fetched successfully');
+                    console.log('Response:', response.data);
+                }
+                //})
+                //.catch(error => {
+                //    console.error('Error fetching fixes:', error);
+                //});
             });
         }
         function scheduleNextRequest() {
