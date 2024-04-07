@@ -1,3 +1,6 @@
 .DS_Store
 example-data/*
 node_modules/*
+data*
+/src/main/*
+flawinfo

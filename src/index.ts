@@ -8,9 +8,11 @@ import { checkCWE } from './check_cwe_support';
 let credentials:any = {}
 
 const vid = core.getInput('vid', {required: true} );
+//const vid = process.env.vid
 credentials['vid'] = vid
 
 const vkey = core.getInput('vkey', {required: true} );
+//const vkey = process.env.vkey
 credentials['vkey'] = vkey
 
 
@@ -21,21 +23,26 @@ const cwe = core.getInput('cwe', {required: false} );
 options['cwe'] = cwe
 
 const inputFile = core.getInput('inputFile', {required: true} );
+//const inputFile = process.env.inputFile
 options['file'] = inputFile
 
 const source_base_path_1 = core.getInput('source_base_path_1', {required: false} );
+//const source_base_path_1 = process.env.source_base_path_1
 options['source_base_path_1'] = source_base_path_1
 
 const source_base_path_2 = core.getInput('source_base_path_2', {required: false} );
+//const source_base_path_2 = process.env.source_base_path_2
 options['source_base_path_2'] = source_base_path_2
 
 const source_base_path_3 = core.getInput('source_base_path_3', {required: false} );
 options['source_base_path_3'] = source_base_path_3
 
 const debugValue = core.getInput('debug', {required: false} );
+//const debugValue = process.env.debugValue
 options['DEBUG'] = debugValue;
 
 const language = core.getInput('language', {required: false} );
+//const language = process.env.language
 options['language'] = language
 
 
@@ -88,7 +95,7 @@ async function createTar(initialFlawInfo:any, options:any){
         }, ['flawInfo', filepath]);
         console.error('Tar is created');
 
-        const artifact = require('@actions/artifact');
+/*         const artifact = require('@actions/artifact');
         let artifactClient = artifact.create()
         const artifactName = 'Veracode Fix artifact - '+initialFlawInfo.issuedID;
         const artifacFiles = [
@@ -99,6 +106,7 @@ async function createTar(initialFlawInfo:any, options:any){
             continueOnError: true
         }
         const uploadResult = await artifactClient.uploadArtifact(artifactName, artifacFiles, rootDirectory, artifactOptions)
+        console.log(uploadResult) */
 
         return tarball
     } catch (err) {

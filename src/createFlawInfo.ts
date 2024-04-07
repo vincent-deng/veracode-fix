@@ -43,7 +43,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
 
     if (flowLength > 0){
         flowArray.forEach((element: any) => {
-            if (element.SourceFile == sourceFile){
+            if (element.SourceFile == sourceFile && element.VarNames != undefined){
 
                 if (options.DEBUG == 'true'){
                     console.log('#######- DEBUG MODE -#######')
