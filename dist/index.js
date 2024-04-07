@@ -36452,15 +36452,16 @@ function checkFix(platform, projectId, options) {
                 });
                 if (!response.data) {
                     console.log('Response is empty. Retrying in 10 seconds.');
+                    console.log('Response:');
+                    console.log(response.data);
                     yield new Promise(resolve => setTimeout(resolve, 10000));
                     yield makeRequest();
-                    //await scheduleNextRequest();
                 }
                 else {
                     console.log('Fixes fetched successfully');
                     console.log('Response:');
-                    console.log(response.data);
-                    return response.data;
+                    console.log(yield response.data);
+                    return yield response.data;
                 }
             });
         }
