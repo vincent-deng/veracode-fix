@@ -83,10 +83,10 @@ export async function checkFix(platform:any, projectId:any, options:any) {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => {
+        .then(async response => {
             if (!response.data) {
                 console.log('Response is empty. Retrying in 10 seconds.');
-                scheduleNextRequest();
+                await scheduleNextRequest();
             } else {
                 console.log('Fixes fetched successfully');
                 console.log('Response:', response.data);

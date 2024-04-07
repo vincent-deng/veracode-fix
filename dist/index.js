@@ -36433,16 +36433,16 @@ function checkFix(platform, projectId, options) {
                         'Content-Type': 'application/json'
                     }
                 })
-                    .then(response => {
+                    .then((response) => __awaiter(this, void 0, void 0, function* () {
                     if (!response.data) {
                         console.log('Response is empty. Retrying in 10 seconds.');
-                        scheduleNextRequest();
+                        yield scheduleNextRequest();
                     }
                     else {
                         console.log('Fixes fetched successfully');
                         console.log('Response:', response.data);
                     }
-                })
+                }))
                     .catch(error => {
                     console.error('Error fetching fixes:', error);
                 });
