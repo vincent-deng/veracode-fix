@@ -36417,7 +36417,7 @@ function upload(platform, tar, options) {
         else {
             console.log('Data uploaded successfully');
             console.log('Project ID is:');
-            console.log(JSON.stringify(response));
+            console.log(response.data);
             return response.data;
         }
     });
@@ -36456,7 +36456,8 @@ function checkFix(platform, projectId, options) {
                 }
                 else {
                     console.log('Fixes fetched successfully');
-                    console.log('Response:', response.data);
+                    console.log('Response:');
+                    console.log(JSON.stringify(response.data));
                 }
             });
         }

@@ -51,7 +51,7 @@ export async function upload(platform:any, tar:any, options:any) {
     else {
         console.log('Data uploaded successfully')
         console.log('Project ID is:')
-        console.log(JSON.stringify(response));
+        console.log(response.data);
         return response.data
     }
 
@@ -91,7 +91,8 @@ export async function checkFix(platform:any, projectId:any, options:any) {
             //await scheduleNextRequest();
         } else {
             console.log('Fixes fetched successfully');
-            console.log('Response:', response.data);
+            console.log('Response:')
+            console.log(JSON.stringify(response.data));
         }
     }
 
