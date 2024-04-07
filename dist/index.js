@@ -36457,7 +36457,7 @@ function checkFix(platform, projectId, options) {
                 else {
                     console.log('Fixes fetched successfully');
                     console.log('Response:');
-                    console.log(JSON.stringify(response.data));
+                    console.log(JSON.stringify(response));
                 }
             });
         }
