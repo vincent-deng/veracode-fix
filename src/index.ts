@@ -66,7 +66,7 @@ async function createTar(initialFlawInfo:any, options:any){
     console.log('Creating tarball')
     const flawInfo = await createFlawInfo(initialFlawInfo,options)
 
-    if (options.DEBUG == true){
+    if (options.DEBUG == 'true'){
         console.log('#######- DEBUG MODE -#######')
         console.log('index.ts')
         console.log('flawInfo on index.ts:')
@@ -114,7 +114,7 @@ async function run() {
             language: options.language,
         }
 
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('index.ts - run()')
             console.log('Initial Flaw Info')

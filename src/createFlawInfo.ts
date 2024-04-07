@@ -2,7 +2,7 @@ import fs from 'fs';
 
 export async function createFlawInfo(flawInfo:any,options:any){
 
-    if (options.DEBUG == true){
+    if (options.DEBUG == 'true'){
         console.log('#######- DEBUG MODE -#######')
         console.log('createFlawInfo.ts')
         console.log('Flaw Info:')
@@ -17,7 +17,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
     const resultArray = data.findings.find((issueId: any) => issueId.issue_id == flawInfo.issuedID)
 
 
-    if (options.DEBUG == true){
+    if (options.DEBUG == 'true'){
         console.log('#######- DEBUG MODE -#######')
         console.log('createFlawInfo.ts')
         console.log('Results array:')
@@ -31,7 +31,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
     const flowArray = resultArray.stack_dumps.stack_dump[0].Frame
     const flowLength = flowArray.length
 
-    if (options.DEBUG == true){
+    if (options.DEBUG == 'true'){
         console.log('#######- DEBUG MODE -#######')
         console.log('createFlawInfo.ts')
         console.log('Flow length: '+flowLength)
@@ -45,7 +45,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         flowArray.forEach((element: any) => {
             if (element.SourceFile == sourceFile){
 
-                if (options.DEBUG == true){
+                if (options.DEBUG == 'true'){
                     console.log('#######- DEBUG MODE -#######')
                     console.log('createFlawInfo.ts')
                     console.log('Flow element: ')
@@ -66,7 +66,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
             }
         });
 
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('createFlawInfo.ts')
             console.log('Flows:')
@@ -91,7 +91,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         const replaceValues = rewrite.split(":")
         const newPath = path.replace(replaceValues[0],replaceValues[1])
 
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('createFlawInfo.ts')
             console.log('Value 1:'+replaceValues[0]+' Value 2: '+replaceValues[1]+' old path: '+path)
@@ -110,7 +110,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         const orgPath2 = options.source_base_path_2.split(":")
         const orgPath3 = options.source_base_path_3.split(":")
 
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('createFlawInfo.ts')
             console.log('path1: '+orgPath1[0]+':'+orgPath1[1]+' path2: '+orgPath2[0]+':'+orgPath2[1]+' path3: '+orgPath3[0]+':'+orgPath3[1])
@@ -121,7 +121,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         if( filename.includes(orgPath1[0])) {
             filepath = replacePath(options.source_base_path_1, filename)
 
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('createFlawInfo.ts')
                 console.log('file path1: '+filename)
@@ -132,7 +132,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         else if (filename.includes(orgPath2[0])){
             filepath = replacePath(options.source_base_path_2, filename)
 
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('createFlawInfo.ts')
                 console.log('file path2: '+filename)
@@ -143,7 +143,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         else if (filename.includes(orgPath3[0])){
             filepath = replacePath(options.source_base_path_3, filename)
 
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('createFlawInfo.ts')
                 console.log('file path3: '+filename)
@@ -168,7 +168,7 @@ export async function createFlawInfo(flawInfo:any,options:any){
         "flow": flows
     }
 
-    if (options.DEBUG == true){
+    if (options.DEBUG == 'true'){
         console.log('#######- DEBUG MODE -#######')
         console.log('createFlawInfo.ts')
         console.log('Full Flaw Info:')

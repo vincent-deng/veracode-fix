@@ -19,7 +19,7 @@ export async function upload(platform:any, tar:any, options:any) {
           method: 'POST',
     })
 
-    if (options.DEBUG == true){
+    if (options.DEBUG == 'true'){
         console.log('#######- DEBUG MODE -#######')
         console.log('requests.ts - upload')
         console.log('Formdata created')
@@ -41,7 +41,7 @@ export async function upload(platform:any, tar:any, options:any) {
 
     if (response.status != 200){
         console.log('Error uploading data')
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('requests.ts - upload')
             console.log(response.data)
@@ -68,7 +68,7 @@ export async function checkFix(platform:any, projectId:any, options:any) {
             method: 'GET',
         })
   
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('requests.ts - cehckFix')
             console.log('ViD: '+platform.cleanedID+' Key: '+platform.cleanedKEY+' Host: '+platform.apiUrl+' URL: /fix/v1/project/'+projectId+'/results'+' Method: POST')

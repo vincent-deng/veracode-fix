@@ -4,7 +4,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         const supportedCWEs = [80,89,113,117,327,331,382,470,597,601]
         if (supportedCWEs.includes(flawInfo.cweID)){
 
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('CWE '+flawInfo.cweID+' is supported for Java')
@@ -13,7 +13,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.CWE+' is not supported Java')
@@ -26,7 +26,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         console.log('CWE check for C#')
         const supportedCWEs = [80,89,201,209,259,352,404,601,611,798]
         if (supportedCWEs.includes(flawInfo.cweID)){
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is supported for csharp')
@@ -35,7 +35,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is not supported sharp')
@@ -45,7 +45,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         }
     }
     else if (flawInfo.language == 'javascript'){
-        if (options.DEBUG == true){
+        if (options.DEBUG == 'true'){
             console.log('#######- DEBUG MODE -#######')
             console.log('check_cwe_support.ts')
             console.log('CWE check for JavaScript')
@@ -53,7 +53,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         }
         const supportedCWEs = [73,78,80,113,117,327,611,614]
         if (supportedCWEs.includes(flawInfo.cweID)){
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is supported for JavaScript')
@@ -62,7 +62,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is not supported JavaScript')
@@ -75,7 +75,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         console.log('CWE check for Python')
         const supportedCWEs = [73,78,80,89,295,327,331,601,757]
         if (supportedCWEs.includes(flawInfo.cweID)){
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is supported for Python')
@@ -84,7 +84,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is not supported Python')
@@ -97,7 +97,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         console.log('CWE check for PHP')
         const supportedCWEs = [73,80,89,117]
         if (supportedCWEs.includes(flawInfo.cweID)){
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is supported for PHP')
@@ -106,7 +106,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is not supported PHP')
@@ -119,7 +119,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         console.log('CWE check for Scala')
         const supportedCWEs = [78,80,89,117,611]
         if (supportedCWEs.includes(flawInfo.cweID)){
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is supported for Scala')
@@ -128,7 +128,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is not supported Scala')
@@ -141,7 +141,7 @@ export async function checkCWE(flawInfo:any, options:any) {
         console.log('CWE check for Kotlin')
         const supportedCWEs = [80,89,113,117,331]
         if (supportedCWEs.includes(flawInfo.cweID)){
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is supported for Kotlin')
@@ -150,7 +150,7 @@ export async function checkCWE(flawInfo:any, options:any) {
             return true
         }
         else {
-            if (options.DEBUG == true){
+            if (options.DEBUG == 'true'){
                 console.log('#######- DEBUG MODE -#######')
                 console.log('check_cwe_support.ts')
                 console.log('Checks - CWE '+flawInfo.cweID+' is not supported Kotlin')

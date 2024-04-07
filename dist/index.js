@@ -35828,7 +35828,7 @@ function checkCWE(flawInfo, options) {
             console.log('CWE check for Java');
             const supportedCWEs = [80, 89, 113, 117, 327, 331, 382, 470, 597, 601];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('CWE ' + flawInfo.cweID + ' is supported for Java');
@@ -35837,7 +35837,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.CWE + ' is not supported Java');
@@ -35850,7 +35850,7 @@ function checkCWE(flawInfo, options) {
             console.log('CWE check for C#');
             const supportedCWEs = [80, 89, 201, 209, 259, 352, 404, 601, 611, 798];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for csharp');
@@ -35859,7 +35859,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported sharp');
@@ -35869,7 +35869,7 @@ function checkCWE(flawInfo, options) {
             }
         }
         else if (flawInfo.language == 'javascript') {
-            if (options.DEBUG == true) {
+            if (options.DEBUG == 'true') {
                 console.log('#######- DEBUG MODE -#######');
                 console.log('check_cwe_support.ts');
                 console.log('CWE check for JavaScript');
@@ -35877,7 +35877,7 @@ function checkCWE(flawInfo, options) {
             }
             const supportedCWEs = [73, 78, 80, 113, 117, 327, 611, 614];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for JavaScript');
@@ -35886,7 +35886,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported JavaScript');
@@ -35899,7 +35899,7 @@ function checkCWE(flawInfo, options) {
             console.log('CWE check for Python');
             const supportedCWEs = [73, 78, 80, 89, 295, 327, 331, 601, 757];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Python');
@@ -35908,7 +35908,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Python');
@@ -35921,7 +35921,7 @@ function checkCWE(flawInfo, options) {
             console.log('CWE check for PHP');
             const supportedCWEs = [73, 80, 89, 117];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for PHP');
@@ -35930,7 +35930,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported PHP');
@@ -35943,7 +35943,7 @@ function checkCWE(flawInfo, options) {
             console.log('CWE check for Scala');
             const supportedCWEs = [78, 80, 89, 117, 611];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Scala');
@@ -35952,7 +35952,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Scala');
@@ -35965,7 +35965,7 @@ function checkCWE(flawInfo, options) {
             console.log('CWE check for Kotlin');
             const supportedCWEs = [80, 89, 113, 117, 331];
             if (supportedCWEs.includes(flawInfo.cweID)) {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is supported for Kotlin');
@@ -35974,7 +35974,7 @@ function checkCWE(flawInfo, options) {
                 return true;
             }
             else {
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('check_cwe_support.ts');
                     console.log('Checks - CWE ' + flawInfo.cweID + ' is not supported Kotlin');
@@ -36012,7 +36012,7 @@ exports.createFlawInfo = void 0;
 const fs_1 = __importDefault(__nccwpck_require__(7147));
 function createFlawInfo(flawInfo, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (options.DEBUG == true) {
+        if (options.DEBUG == 'true') {
             console.log('#######- DEBUG MODE -#######');
             console.log('createFlawInfo.ts');
             console.log('Flaw Info:');
@@ -36024,7 +36024,7 @@ function createFlawInfo(flawInfo, options) {
         const data = JSON.parse(resultsFile);
         console.log('Reviewing issueID: ' + flawInfo.issuedID);
         const resultArray = data.findings.find((issueId) => issueId.issue_id == flawInfo.issuedID);
-        if (options.DEBUG == true) {
+        if (options.DEBUG == 'true') {
             console.log('#######- DEBUG MODE -#######');
             console.log('createFlawInfo.ts');
             console.log('Results array:');
@@ -36035,7 +36035,7 @@ function createFlawInfo(flawInfo, options) {
         //flow length
         const flowArray = resultArray.stack_dumps.stack_dump[0].Frame;
         const flowLength = flowArray.length;
-        if (options.DEBUG == true) {
+        if (options.DEBUG == 'true') {
             console.log('#######- DEBUG MODE -#######');
             console.log('createFlawInfo.ts');
             console.log('Flow length: ' + flowLength);
@@ -36045,7 +36045,7 @@ function createFlawInfo(flawInfo, options) {
         if (flowLength > 0) {
             flowArray.forEach((element) => {
                 if (element.SourceFile == sourceFile) {
-                    if (options.DEBUG == true) {
+                    if (options.DEBUG == 'true') {
                         console.log('#######- DEBUG MODE -#######');
                         console.log('createFlawInfo.ts');
                         console.log('Flow element: ');
@@ -36063,7 +36063,7 @@ function createFlawInfo(flawInfo, options) {
                     flows.push(flow);
                 }
             });
-            if (options.DEBUG == true) {
+            if (options.DEBUG == 'true') {
                 console.log('#######- DEBUG MODE -#######');
                 console.log('createFlawInfo.ts');
                 console.log('Flows:');
@@ -36085,7 +36085,7 @@ function createFlawInfo(flawInfo, options) {
         function replacePath(rewrite, path) {
             const replaceValues = rewrite.split(":");
             const newPath = path.replace(replaceValues[0], replaceValues[1]);
-            if (options.DEBUG == true) {
+            if (options.DEBUG == 'true') {
                 console.log('#######- DEBUG MODE -#######');
                 console.log('createFlawInfo.ts');
                 console.log('Value 1:' + replaceValues[0] + ' Value 2: ' + replaceValues[1] + ' old path: ' + path);
@@ -36100,7 +36100,7 @@ function createFlawInfo(flawInfo, options) {
             const orgPath1 = options.source_base_path_1.split(":");
             const orgPath2 = options.source_base_path_2.split(":");
             const orgPath3 = options.source_base_path_3.split(":");
-            if (options.DEBUG == true) {
+            if (options.DEBUG == 'true') {
                 console.log('#######- DEBUG MODE -#######');
                 console.log('createFlawInfo.ts');
                 console.log('path1: ' + orgPath1[0] + ':' + orgPath1[1] + ' path2: ' + orgPath2[0] + ':' + orgPath2[1] + ' path3: ' + orgPath3[0] + ':' + orgPath3[1]);
@@ -36108,7 +36108,7 @@ function createFlawInfo(flawInfo, options) {
             }
             if (filename.includes(orgPath1[0])) {
                 filepath = replacePath(options.source_base_path_1, filename);
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('createFlawInfo.ts');
                     console.log('file path1: ' + filename);
@@ -36118,7 +36118,7 @@ function createFlawInfo(flawInfo, options) {
             }
             else if (filename.includes(orgPath2[0])) {
                 filepath = replacePath(options.source_base_path_2, filename);
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('createFlawInfo.ts');
                     console.log('file path2: ' + filename);
@@ -36128,7 +36128,7 @@ function createFlawInfo(flawInfo, options) {
             }
             else if (filename.includes(orgPath3[0])) {
                 filepath = replacePath(options.source_base_path_3, filename);
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('createFlawInfo.ts');
                     console.log('file path3: ' + filename);
@@ -36150,7 +36150,7 @@ function createFlawInfo(flawInfo, options) {
             "issueId": resultArray.issue_id,
             "flow": flows
         };
-        if (options.DEBUG == true) {
+        if (options.DEBUG == 'true') {
             console.log('#######- DEBUG MODE -#######');
             console.log('createFlawInfo.ts');
             console.log('Full Flaw Info:');
@@ -36255,7 +36255,7 @@ function createTar(initialFlawInfo, options) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Creating tarball');
         const flawInfo = yield (0, createFlawInfo_1.createFlawInfo)(initialFlawInfo, options);
-        if (options.DEBUG == true) {
+        if (options.DEBUG == 'true') {
             console.log('#######- DEBUG MODE -#######');
             console.log('index.ts');
             console.log('flawInfo on index.ts:');
@@ -36296,7 +36296,7 @@ function run() {
                 cweID: parseInt(jsonFindings[i].cwe_id),
                 language: options.language,
             };
-            if (options.DEBUG == true) {
+            if (options.DEBUG == 'true') {
                 console.log('#######- DEBUG MODE -#######');
                 console.log('index.ts - run()');
                 console.log('Initial Flaw Info');
@@ -36376,7 +36376,7 @@ function upload(platform, tar, options) {
             url: '/fix/v1/project/upload_code',
             method: 'POST',
         });
-        if (options.DEBUG == true) {
+        if (options.DEBUG == 'true') {
             console.log('#######- DEBUG MODE -#######');
             console.log('requests.ts - upload');
             console.log('Formdata created');
@@ -36392,7 +36392,7 @@ function upload(platform, tar, options) {
         });
         if (response.status != 200) {
             console.log('Error uploading data');
-            if (options.DEBUG == true) {
+            if (options.DEBUG == 'true') {
                 console.log('#######- DEBUG MODE -#######');
                 console.log('requests.ts - upload');
                 console.log(response.data);
@@ -36419,7 +36419,7 @@ function checkFix(platform, projectId, options) {
                     url: '/fix/v1/project/' + projectId + '/results',
                     method: 'GET',
                 });
-                if (options.DEBUG == true) {
+                if (options.DEBUG == 'true') {
                     console.log('#######- DEBUG MODE -#######');
                     console.log('requests.ts - cehckFix');
                     console.log('ViD: ' + platform.cleanedID + ' Key: ' + platform.cleanedKEY + ' Host: ' + platform.apiUrl + ' URL: /fix/v1/project/' + projectId + '/results' + ' Method: POST');
