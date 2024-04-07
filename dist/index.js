@@ -36338,6 +36338,8 @@ function run() {
                     const tar = yield createTar(initialFlawInfo, options);
                     const uploadTar = yield (0, requests_1.upload)(choosePlatform, tar, options);
                     const checkFixResults = yield (0, requests_1.checkFix)(choosePlatform, uploadTar, options);
+                    console.log('Fix results:');
+                    console.log(checkFixResults);
                 }
                 else {
                     console.log('CWE ' + initialFlawInfo.cweID + ' is NOT supported for ' + options.language);
@@ -36457,7 +36459,8 @@ function checkFix(platform, projectId, options) {
                 else {
                     console.log('Fixes fetched successfully');
                     console.log('Response:');
-                    console.log(response);
+                    console.log(response.data);
+                    return response.data;
                 }
             });
         }

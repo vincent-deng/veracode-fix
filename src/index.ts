@@ -152,6 +152,8 @@ async function run() {
                 const tar = await createTar(initialFlawInfo,options)
                 const uploadTar = await upload(choosePlatform, tar, options)
                 const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
+                console.log('Fix results:')
+                console.log(checkFixResults)
             }
             else {
                 console.log('CWE '+initialFlawInfo.cweID+' is NOT supported for '+options.language)

@@ -92,7 +92,8 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         } else {
             console.log('Fixes fetched successfully');
             console.log('Response:')
-            console.log(response);
+            console.log(response.data);
+            return response.data;
         }
     }
 
