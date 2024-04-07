@@ -86,9 +86,8 @@ export async function checkFix(platform:any, projectId:any, options:any) {
         //.then(async response => {
             if (!response.data) {
                 console.log('Response is empty. Retrying in 10 seconds.');
-                setTimeout(async () => {
-                    await makeRequest();
-                }, 10000);
+                await new Promise(resolve => setTimeout(resolve, 10000));
+                await makeRequest();
                 //await scheduleNextRequest();
             } else {
                 console.log('Fixes fetched successfully');

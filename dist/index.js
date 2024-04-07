@@ -36436,9 +36436,8 @@ function checkFix(platform, projectId, options) {
                 //.then(async response => {
                 if (!response.data) {
                     console.log('Response is empty. Retrying in 10 seconds.');
-                    setTimeout(() => __awaiter(this, void 0, void 0, function* () {
-                        yield makeRequest();
-                    }), 10000);
+                    yield new Promise(resolve => setTimeout(resolve, 10000));
+                    yield makeRequest();
                     //await scheduleNextRequest();
                 }
                 else {
