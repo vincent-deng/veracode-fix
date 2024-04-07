@@ -83,20 +83,16 @@ export async function checkFix(platform:any, projectId:any, options:any) {
                 'Content-Type': 'application/json'
             }
         })
-        //.then(async response => {
-            if (!response.data) {
-                console.log('Response is empty. Retrying in 10 seconds.');
-                await new Promise(resolve => setTimeout(resolve, 10000));
-                await makeRequest();
-                //await scheduleNextRequest();
-            } else {
-                console.log('Fixes fetched successfully');
-                console.log('Response:', response.data);
-            }
-        //})
-        //.catch(error => {
-        //    console.error('Error fetching fixes:', error);
-        //});
+
+        if (!response.data) {
+            console.log('Response is empty. Retrying in 10 seconds.');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await makeRequest();
+            //await scheduleNextRequest();
+        } else {
+            console.log('Fixes fetched successfully');
+            console.log('Response:', response);
+        }
     }
 
     await makeRequest();

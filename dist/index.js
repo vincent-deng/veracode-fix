@@ -36433,7 +36433,6 @@ function checkFix(platform, projectId, options) {
                         'Content-Type': 'application/json'
                     }
                 });
-                //.then(async response => {
                 if (!response.data) {
                     console.log('Response is empty. Retrying in 10 seconds.');
                     yield new Promise(resolve => setTimeout(resolve, 10000));
@@ -36442,12 +36441,8 @@ function checkFix(platform, projectId, options) {
                 }
                 else {
                     console.log('Fixes fetched successfully');
-                    console.log('Response:', response.data);
+                    console.log('Response:', response);
                 }
-                //})
-                //.catch(error => {
-                //    console.error('Error fetching fixes:', error);
-                //});
             });
         }
         yield makeRequest();
