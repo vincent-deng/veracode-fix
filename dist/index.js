@@ -36417,7 +36417,7 @@ function upload(platform, tar, options) {
         else {
             console.log('Data uploaded successfully');
             console.log('Project ID is:');
-            console.log(JSON.stringify(response.data));
+            console.log(JSON.stringify(response));
             return response.data;
         }
     });
