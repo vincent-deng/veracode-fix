@@ -43388,7 +43388,7 @@ function run() {
                     console.log(exampleFixResults);
                     if (options.prComment == 'true') {
                         console.log('PR Comment');
-                        const prComment = yield (0, create_pr_comment_1.createPRComment)(checkFixResults, options);
+                        const prComment = yield (0, create_pr_comment_1.createPRComment)(exampleFixResults, options);
                     }
                 }
                 else {
