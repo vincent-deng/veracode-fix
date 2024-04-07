@@ -98,7 +98,9 @@ export async function checkFix(platform:any, projectId:any, options:any) {
     }
 
     async function scheduleNextRequest() {
-        setTimeout(await makeRequest, 10000);
+        setTimeout(async () => {
+            await makeRequest();
+        }, 10000);
     }
 
     await makeRequest();
