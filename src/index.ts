@@ -95,19 +95,6 @@ async function createTar(initialFlawInfo:any, options:any){
         }, ['flawInfo', filepath]);
         console.error('Tar is created');
 
-/*         const artifact = require('@actions/artifact');
-        let artifactClient = artifact.create()
-        const artifactName = 'Veracode Fix artifact - '+initialFlawInfo.issuedID;
-        const artifacFiles = [
-            'data.tar.gz'
-        ]
-        const rootDirectory = process.cwd()
-        const artifactOptions = {
-            continueOnError: true
-        }
-        const uploadResult = await artifactClient.uploadArtifact(artifactName, artifacFiles, rootDirectory, artifactOptions)
-        console.log(uploadResult) */
-
         return tarball
     } catch (err) {
         // File does not exist
