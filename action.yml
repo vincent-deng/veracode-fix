@@ -7,6 +7,10 @@ inputs:
   vkey:
     description: 'Veracode API Key'
     required: true
+  token:
+    description: 'GitHub Token'
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
   inputFile:
     description: 'Results file from Veracode'
     required: false

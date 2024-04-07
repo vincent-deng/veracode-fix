@@ -17,7 +17,8 @@
     "fs": "^0.0.1-security",
     "sjcl": "^1.0.8",
     "tar": "^6.2.1",
-    "tar-stream": "^3.1.7"
+    "tar-stream": "^3.1.7",
+    "typescript": "^5.4.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",

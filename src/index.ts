@@ -91,11 +91,14 @@ async function createTar(initialFlawInfo:any, options:any){
         const artifact = require('@actions/artifact');
         let artifactClient = artifact.create()
         const artifactName = 'Veracode Fix artifact - '+initialFlawInfo.issuedID;
-        const files = [
+        const artifacFiles = [
             'data.tar.gz'
         ]
-
-        const uploadResult = await artifactClient.uploadArtifact(artifactName, files)
+        const rootDirectory = process.cwd()
+        const artifactOptions = {
+            continueOnError: true
+        }
+        const uploadResult = await artifactClient.uploadArtifact(artifactName, artifacFiles, rootDirectory, artifactOptions)
 
         return tarball
     } catch (err) {
