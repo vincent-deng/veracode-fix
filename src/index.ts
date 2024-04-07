@@ -46,6 +46,9 @@ const language = core.getInput('language', {required: false} );
 //const language = process.env.language
 options['language'] = language
 
+const prComment = core.getInput('prComment', {required: false} );
+//const prComment = process.env.prComment
+options['prComment'] = prComment
 
 
 
