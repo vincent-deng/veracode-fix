@@ -81,7 +81,15 @@ export async function checkFix(platform:any, projectId:any, options:any) {
             headers: {
                 'Authorization': authHeader,
                 'Content-Type': 'application/json'
-            }
+            },
+            transformResponse: [(data) => {
+                try {
+                    return data;
+                } catch (error) {
+                    console.error('JSON parsing error:', error);
+                    throw error;
+                }
+            }]
         })
 
         if (!response.data) {

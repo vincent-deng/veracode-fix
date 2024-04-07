@@ -36448,7 +36448,16 @@ function checkFix(platform, projectId, options) {
                     headers: {
                         'Authorization': authHeader,
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    transformResponse: [(data) => {
+                            try {
+                                return data;
+                            }
+                            catch (error) {
+                                console.error('JSON parsing error:', error);
+                                throw error;
+                            }
+                        }]
                 });
                 if (!response.data) {
                     console.log('Response is empty. Retrying in 10 seconds.');
