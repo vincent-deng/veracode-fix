@@ -16,6 +16,9 @@ export async function createPRComment(results:any, options:any){
     commentBody = commentBody+splitResults1[0]
     commentBody = commentBody+'</pre>'
 
+    console.log('Comment body')
+    console.log(commentBody)
+
     core.info('check if we run on a pull request')
     let pullRequest = process.env.GITHUB_REF
     console.log(pullRequest)
