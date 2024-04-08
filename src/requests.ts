@@ -108,6 +108,8 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
 
     const response = await fetch(appUrl, { headers });
+    console.log('3======================================');
+    console.log(response);
     try {
         console.log(await response.text());
         const jsonData = await response.json();

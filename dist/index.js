@@ -46285,6 +46285,8 @@ function makeRequest(platform, projectId, options) {
         };
         const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
         const response = yield fetch(appUrl, { headers });
+        console.log('3======================================');
+        console.log(response);
         try {
             console.log(yield response.text());
             const jsonData = yield response.json();
