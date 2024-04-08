@@ -159,7 +159,7 @@ async function run() {
                 console.log('CWE ' + initialFlawInfo.cweID + ' is supported for ' + options.language)
                 const choosePlatform = await selectPlatfrom(credentials)
                 const tar = await createTar(initialFlawInfo, options)
-                await client.uploadArtifact('my-artifact', ['data.tar.gz'], 'my-data');
+                await client.uploadArtifact('my-artifact', ['data.tar.gz'], './');
                 const uploadTar = await upload(choosePlatform, tar, options)
                 const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
 
