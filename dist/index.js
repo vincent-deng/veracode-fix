@@ -43146,6 +43146,7 @@ function createPRComment(results, options, flawInfo) {
         commentBody = commentBody + '<pre>Veracode Fix - Fix Suggestions<br>';
         commentBody = commentBody + 'Veracode STATIC Finding:<br>';
         commentBody = commentBody + '--------------------------------<br>';
+        commentBody = commentBody + '<details><summary>STATIC Finding</summary><p>';
         commentBody = commentBody + 'Issue ID: ' + flawInfo.issuedID + '<br>';
         commentBody = commentBody + 'CWE ID: ' + flawWED + '<br>';
         commentBody = commentBody + 'Severity: ' + flawSeverity + '<br>';
@@ -43154,9 +43155,14 @@ function createPRComment(results, options, flawInfo) {
         commentBody = commentBody + 'Source File: ' + sourceFile + '<br>';
         commentBody = commentBody + 'Source Line: ' + sourceLine + '<br>';
         commentBody = commentBody + 'Function Name: ' + functionName + '<br>';
+        commentBody = commentBody + '</p></details>';
+        commentBody = commentBody + '--------------------------------<br>';
         commentBody = commentBody + 'DIFF: ';
         commentBody = commentBody + '--------------------------------<br>';
+        commentBody = commentBody + '<details><summary>Fix Suggestion</summary><p>';
         commentBody = commentBody + results[0];
+        commentBody = commentBody + '</p></details>';
+        commentBody = commentBody + '--------------------------------<br>';
         commentBody = commentBody + '</pre>';
         console.log('Comment body');
         console.log(commentBody);
