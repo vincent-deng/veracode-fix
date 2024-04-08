@@ -98,6 +98,8 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
+    console.log('====================================');
+    console.log(response);
     const data = await response.json();
     console.log('====================================');
     console.log(data);

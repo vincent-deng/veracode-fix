@@ -46275,6 +46275,8 @@ function makeRequest(platform, projectId, options) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
+        console.log('====================================');
+        console.log(response);
         const data = yield response.json();
         console.log('====================================');
         console.log(data);
