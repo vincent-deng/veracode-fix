@@ -59,44 +59,44 @@ export async function upload(platform:any, tar:any, options:any) {
 
 
 export async function checkFix(platform:any, projectId:any, options:any) {
-    async function makeRequest() {
-        const authHeader = await calculateAuthorizationHeader({
-            id: platform.cleanedID,
-            key: platform.cleanedKEY,
-            host: platform.apiUrl,
-            url: '/fix/v1/project/'+projectId+'/results',
-            method: 'GET',
-        })
-  
-        if (options.DEBUG == 'true'){
-            console.log('#######- DEBUG MODE -#######')
-            console.log('requests.ts - cehckFix')
-            console.log('ViD: '+platform.cleanedID+' Key: '+platform.cleanedKEY+' Host: '+platform.apiUrl+' URL: /fix/v1/project/'+projectId+'/results'+' Method: POST')
-            console.log('Auth header created')
-            console.log(authHeader)
-            console.log('#######- DEBUG MODE -#######')
-        }
+    await makeRequest(platform, projectId, options);
+}
 
-        const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
-            headers: {
-                'Authorization': authHeader,
-                'Content-Type': 'application/json'
-            }
-        })
+async function makeRequest(platform:any, projectId:any, options:any) {
+    const authHeader = await calculateAuthorizationHeader({
+        id: platform.cleanedID,
+        key: platform.cleanedKEY,
+        host: platform.apiUrl,
+        url: '/fix/v1/project/'+projectId+'/results',
+        method: 'GET',
+    })
 
-        if (!response.data) {
-            console.log('Response is empty. Retrying in 10 seconds.');
-            console.log('Response:')
-            console.log(response.data);
-            await new Promise(resolve => setTimeout(resolve, 10000));
-            await makeRequest();
-        } else {
-            console.log('Fixes fetched successfully');
-            console.log('Response:')
-            console.log(await response);
-            return await response.data;
-        }
+    if (options.DEBUG == 'true'){
+        console.log('#######- DEBUG MODE -#######')
+        console.log('requests.ts - cehckFix')
+        console.log('ViD: '+platform.cleanedID+' Key: '+platform.cleanedKEY+' Host: '+platform.apiUrl+' URL: /fix/v1/project/'+projectId+'/results'+' Method: POST')
+        console.log('Auth header created')
+        console.log(authHeader)
+        console.log('#######- DEBUG MODE -#######')
     }
 
-    await makeRequest();
+    const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
+        headers: {
+            'Authorization': authHeader,
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if (!response.data) {
+        console.log('Response is empty. Retrying in 10 seconds.');
+        console.log('Response:')
+        console.log(response.data);
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        await makeRequest(platform, projectId, options);
+    } else {
+        console.log('Fixes fetched successfully');
+        console.log('Response:')
+        console.log(response);
+        return response.data;
+    }
 }

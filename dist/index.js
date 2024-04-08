@@ -43518,48 +43518,48 @@ function upload(platform, tar, options) {
 exports.upload = upload;
 function checkFix(platform, projectId, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        function makeRequest() {
-            return __awaiter(this, void 0, void 0, function* () {
-                const authHeader = yield (0, auth_1.calculateAuthorizationHeader)({
-                    id: platform.cleanedID,
-                    key: platform.cleanedKEY,
-                    host: platform.apiUrl,
-                    url: '/fix/v1/project/' + projectId + '/results',
-                    method: 'GET',
-                });
-                if (options.DEBUG == 'true') {
-                    console.log('#######- DEBUG MODE -#######');
-                    console.log('requests.ts - cehckFix');
-                    console.log('ViD: ' + platform.cleanedID + ' Key: ' + platform.cleanedKEY + ' Host: ' + platform.apiUrl + ' URL: /fix/v1/project/' + projectId + '/results' + ' Method: POST');
-                    console.log('Auth header created');
-                    console.log(authHeader);
-                    console.log('#######- DEBUG MODE -#######');
-                }
-                const response = yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
-                    headers: {
-                        'Authorization': authHeader,
-                        'Content-Type': 'application/json'
-                    }
-                });
-                if (!response.data) {
-                    console.log('Response is empty. Retrying in 10 seconds.');
-                    console.log('Response:');
-                    console.log(response.data);
-                    yield new Promise(resolve => setTimeout(resolve, 10000));
-                    yield makeRequest();
-                }
-                else {
-                    console.log('Fixes fetched successfully');
-                    console.log('Response:');
-                    console.log(yield response);
-                    return yield response.data;
-                }
-            });
-        }
-        yield makeRequest();
+        yield makeRequest(platform, projectId, options);
     });
 }
 exports.checkFix = checkFix;
+function makeRequest(platform, projectId, options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const authHeader = yield (0, auth_1.calculateAuthorizationHeader)({
+            id: platform.cleanedID,
+            key: platform.cleanedKEY,
+            host: platform.apiUrl,
+            url: '/fix/v1/project/' + projectId + '/results',
+            method: 'GET',
+        });
+        if (options.DEBUG == 'true') {
+            console.log('#######- DEBUG MODE -#######');
+            console.log('requests.ts - cehckFix');
+            console.log('ViD: ' + platform.cleanedID + ' Key: ' + platform.cleanedKEY + ' Host: ' + platform.apiUrl + ' URL: /fix/v1/project/' + projectId + '/results' + ' Method: POST');
+            console.log('Auth header created');
+            console.log(authHeader);
+            console.log('#######- DEBUG MODE -#######');
+        }
+        const response = yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
+            headers: {
+                'Authorization': authHeader,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.data) {
+            console.log('Response is empty. Retrying in 10 seconds.');
+            console.log('Response:');
+            console.log(response.data);
+            yield new Promise(resolve => setTimeout(resolve, 10000));
+            yield makeRequest(platform, projectId, options);
+        }
+        else {
+            console.log('Fixes fetched successfully');
+            console.log('Response:');
+            console.log(response);
+            return response.data;
+        }
+    });
+}
 
 
 /***/ }),
