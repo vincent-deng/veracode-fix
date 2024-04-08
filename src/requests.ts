@@ -93,27 +93,25 @@ async function makeRequest(platform: any, projectId: any, options: any) {
         console.log('#######- DEBUG MODE -#######')
     }
 
-    /*     const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
-            headers: {
-                'Authorization': authHeader,
-                'Content-Type': 'application/json'
-            }
-        }) */
+    const response = await axios.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
+        headers: {
+            'Authorization': authHeader,
+            'Content-Type': 'application/json'
+        }
+    })
 
-    const headers = {
-        Authorization: authHeader,
-        'Content-Type': 'application/json'
-    };
+    // const headers = {
+    //     Authorization: authHeader,
+    //     'Content-Type': 'application/json'
+    // };
 
-    const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
+    // const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
 
-    const response = await fetch(appUrl, { headers });
+    // const response = await fetch(appUrl, { headers });
     console.log('3======================================');
     console.log(response);
     try {
-        console.log(await response.text());
-        const jsonData = await response.json();
-        return jsonData;
+        return response.data;
     } catch (error) {
         console.error('Error parsing JSON:', error);
         return 'not ready yet';

@@ -46273,24 +46273,22 @@ function makeRequest(platform, projectId, options) {
             console.log(authHeader);
             console.log('#######- DEBUG MODE -#######');
         }
-        /*     const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
-                headers: {
-                    'Authorization': authHeader,
-                    'Content-Type': 'application/json'
-                }
-            }) */
-        const headers = {
-            Authorization: authHeader,
-            'Content-Type': 'application/json'
-        };
-        const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
-        const response = yield fetch(appUrl, { headers });
+        const response = yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
+            headers: {
+                'Authorization': authHeader,
+                'Content-Type': 'application/json'
+            }
+        });
+        // const headers = {
+        //     Authorization: authHeader,
+        //     'Content-Type': 'application/json'
+        // };
+        // const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
+        // const response = await fetch(appUrl, { headers });
         console.log('3======================================');
         console.log(response);
         try {
-            console.log(yield response.text());
-            const jsonData = yield response.json();
-            return jsonData;
+            return response.data;
         }
         catch (error) {
             console.error('Error parsing JSON:', error);
