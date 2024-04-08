@@ -93,14 +93,13 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     };
 
     const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
-    //const response = await fetch(appUrl, { headers });
-
 
     const response = await fetch(appUrl, { headers });
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
     const data = await response.json();
+    console.log('====================================');
     console.log(data);
     return data;
     // .then(async response => {
