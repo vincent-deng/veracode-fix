@@ -46277,7 +46277,7 @@ function makeRequest(platform, projectId, options) {
         }
         console.log('====================================');
         console.log(response);
-        const data = yield response.json();
+        const data = yield response.text();
         console.log('====================================');
         console.log(data);
         return data;

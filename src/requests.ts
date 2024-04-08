@@ -100,7 +100,7 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     }
     console.log('====================================');
     console.log(response);
-    const data = await response.json();
+    const data = await response.text();
     console.log('====================================');
     console.log(data);
     return data;
