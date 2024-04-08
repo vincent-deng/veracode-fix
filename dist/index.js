@@ -43539,24 +43539,32 @@ function makeRequest(platform, projectId, options) {
             console.log(authHeader);
             console.log('#######- DEBUG MODE -#######');
         }
-        const response = yield axios_1.default.get('https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results', {
-            headers: {
-                'Authorization': authHeader,
-                'Content-Type': 'application/json'
-            }
-        });
-        if (!response.data || response.data.length == 0) {
+        /*     const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
+                headers: {
+                    'Authorization': authHeader,
+                    'Content-Type': 'application/json'
+                }
+            }) */
+        const headers = {
+            Authorization: authHeader,
+            'Content-Type': 'application/json'
+        };
+        const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
+        const response = yield fetch(appUrl, { headers });
+        const data = yield response.json();
+        console.log(data);
+        if (!data) {
             console.log('Response is empty. Retrying in 10 seconds.');
             console.log('Response:');
-            console.log(response);
+            console.log(data);
             yield new Promise(resolve => setTimeout(resolve, 10000));
             yield makeRequest(platform, projectId, options);
         }
         else {
             console.log('Fixes fetched successfully');
             console.log('Response:');
-            console.log(response);
-            return response.data;
+            console.log(data);
+            return data;
         }
     });
 }

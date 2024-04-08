@@ -80,23 +80,35 @@ async function makeRequest(platform:any, projectId:any, options:any) {
         console.log('#######- DEBUG MODE -#######')
     }
 
-    const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
+/*     const response = await axios.get('https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results', {
         headers: {
             'Authorization': authHeader,
             'Content-Type': 'application/json'
         }
-    })
+    }) */
 
-    if (!response.data || response.data.length == 0) {
+    const headers = {
+        Authorization: authHeader,
+        'Content-Type': 'application/json'
+      };
+
+    const appUrl = 'https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results';
+    const response = await fetch(appUrl, { headers });
+    const data = await response.json();
+    console.log(data);
+
+
+
+    if (!data) {
         console.log('Response is empty. Retrying in 10 seconds.');
         console.log('Response:')
-        console.log(response);
+        console.log(data);
         await new Promise(resolve => setTimeout(resolve, 10000));
         await makeRequest(platform, projectId, options);
     } else {
         console.log('Fixes fetched successfully');
         console.log('Response:')
-        console.log(response);
-        return response.data;
+        console.log(data);
+        return data;
     }
 }
