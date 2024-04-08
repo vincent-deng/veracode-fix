@@ -46238,10 +46238,20 @@ function upload(platform, tar, options) {
 exports.upload = upload;
 function checkFix(platform, projectId, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield makeRequest(platform, projectId, options);
-        console.log('2======================================');
-        console.log(`response data is: ${data}`);
-        return data;
+        for (let i = 0; i < 10; i++) {
+            console.log('Checking for fixes');
+            const data = yield makeRequest(platform, projectId, options);
+            console.log('2======================================');
+            console.log(`response data is: ${data}`);
+            if (data != 'not ready yet') {
+                return data;
+            }
+            yield new Promise(resolve => setTimeout(resolve, 10000));
+        }
+        // const data = await makeRequest(platform, projectId, options);
+        // console.log('2======================================');
+        // console.log(`response data is: ${data}`);
+        // return data;
     });
 }
 exports.checkFix = checkFix;
@@ -46274,13 +46284,22 @@ function makeRequest(platform, projectId, options) {
         };
         const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
         const response = yield fetch(appUrl, { headers });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        try {
+            console.log(response.text());
+            const jsonData = yield response.json();
+            return jsonData;
         }
-        console.log('1====================================');
-        console.log(response);
-        const data = yield response.text();
-        return data;
+        catch (error) {
+            console.error('Error parsing JSON:', error);
+            return 'not ready yet';
+        }
+        // if (!response.ok) {
+        //     throw new Error('Network response was not ok');
+        // }
+        // console.log('1====================================');
+        // console.log(response);
+        // const data = await response.text();
+        // return data;
         // .then(async response => {
         //     if (!response.ok) {
         //         throw new Error('Network response was not ok');

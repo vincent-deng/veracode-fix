@@ -59,10 +59,20 @@ export async function upload(platform: any, tar: any, options: any) {
 
 
 export async function checkFix(platform: any, projectId: any, options: any) {
-    const data = await makeRequest(platform, projectId, options);
-    console.log('2======================================');
-    console.log(`response data is: ${data}`);
-    return data;
+    for (let i = 0; i < 10; i++) {
+        console.log('Checking for fixes')
+        const data = await makeRequest(platform, projectId, options);
+        console.log('2======================================');
+        console.log(`response data is: ${data}`);
+        if (data != 'not ready yet') {
+            return data;
+        }
+        await new Promise(resolve => setTimeout(resolve, 10000));
+    }
+    // const data = await makeRequest(platform, projectId, options);
+    // console.log('2======================================');
+    // console.log(`response data is: ${data}`);
+    // return data;
 }
 
 async function makeRequest(platform: any, projectId: any, options: any) {
@@ -98,13 +108,21 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
 
     const response = await fetch(appUrl, { headers });
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
+    try {
+        console.log(response.text());
+        const jsonData = await response.json();
+        return jsonData;
+    } catch (error) {
+        console.error('Error parsing JSON:', error);
+        return 'not ready yet';
     }
-    console.log('1====================================');
-    console.log(response);
-    const data = await response.text();
-    return data;
+    // if (!response.ok) {
+    //     throw new Error('Network response was not ok');
+    // }
+    // console.log('1====================================');
+    // console.log(response);
+    // const data = await response.text();
+    // return data;
 
     // .then(async response => {
     //     if (!response.ok) {
