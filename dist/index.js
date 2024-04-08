@@ -43545,10 +43545,10 @@ function makeRequest(platform, projectId, options) {
                 'Content-Type': 'application/json'
             }
         });
-        if (!response.data) {
+        if (!response.data || response.data.length == 0) {
             console.log('Response is empty. Retrying in 10 seconds.');
             console.log('Response:');
-            console.log(response.data);
+            console.log(response);
             yield new Promise(resolve => setTimeout(resolve, 10000));
             yield makeRequest(platform, projectId, options);
         }

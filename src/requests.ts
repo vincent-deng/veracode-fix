@@ -87,10 +87,10 @@ async function makeRequest(platform:any, projectId:any, options:any) {
         }
     })
 
-    if (!response.data) {
+    if (!response.data || response.data.length == 0) {
         console.log('Response is empty. Retrying in 10 seconds.');
         console.log('Response:')
-        console.log(response.data);
+        console.log(response);
         await new Promise(resolve => setTimeout(resolve, 10000));
         await makeRequest(platform, projectId, options);
     } else {
