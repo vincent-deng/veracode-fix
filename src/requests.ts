@@ -60,7 +60,7 @@ export async function upload(platform: any, tar: any, options: any) {
 
 export async function checkFix(platform: any, projectId: any, options: any) {
     const data = await makeRequest(platform, projectId, options);
-    console.log('======================================');
+    console.log('2======================================');
     console.log(data);
     return data;
 }
@@ -101,7 +101,7 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
-    console.log('====================================');
+    console.log('1====================================');
     console.log(response);
     const data = await response.text();
     return data;

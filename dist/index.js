@@ -46240,7 +46240,7 @@ exports.upload = upload;
 function checkFix(platform, projectId, options) {
     return __awaiter(this, void 0, void 0, function* () {
         const data = yield makeRequest(platform, projectId, options);
-        console.log('======================================');
+        console.log('2======================================');
         console.log(data);
         return data;
     });
@@ -46278,7 +46278,7 @@ function makeRequest(platform, projectId, options) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        console.log('====================================');
+        console.log('1====================================');
         console.log(response);
         const data = yield response.text();
         return data;
