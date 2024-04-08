@@ -43557,22 +43557,7 @@ function makeRequest(platform, projectId, options) {
                 throw new Error('Network response was not ok');
             }
             // Parse as text
-            //return response.text()
-            // Get a reader from the body
-            if (!response.body) {
-                yield makeRequest(platform, projectId, options);
-            }
-            else {
-                const reader = response.body.getReader();
-                // Read the stream
-                return reader.read().then(({ value, done }) => {
-                    // Convert the Uint8Array to a string
-                    const string = new TextDecoder().decode(value);
-                    console.log('Raw response data:');
-                    console.log(string);
-                    return string;
-                });
-            }
+            return response.text();
         }))
             .then((data) => __awaiter(this, void 0, void 0, function* () {
             console.log('Response data:');
