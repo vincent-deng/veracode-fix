@@ -109,7 +109,7 @@ async function makeRequest(platform: any, projectId: any, options: any) {
 
     const response = await fetch(appUrl, { headers });
     try {
-        console.log(response.text());
+        console.log(await response.text());
         const jsonData = await response.json();
         return jsonData;
     } catch (error) {
