@@ -43551,7 +43551,7 @@ function makeRequest(platform, projectId, options) {
         };
         const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
         const response = yield fetch(appUrl, { headers });
-        const data = yield response.json();
+        const data = yield response;
         console.log(data);
         if (!data) {
             console.log('Response is empty. Retrying in 10 seconds.');
