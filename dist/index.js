@@ -43115,25 +43115,47 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createPRComment = void 0;
 const core = __importStar(__nccwpck_require__(5127));
 const github = __importStar(__nccwpck_require__(3134));
-function createPRComment(results, options) {
+const fs_1 = __importDefault(__nccwpck_require__(7147));
+function createPRComment(results, options, flawInfo) {
     return __awaiter(this, void 0, void 0, function* () {
         var _a;
-        console.log('Results to work with');
-        console.log(results);
         console.log('Results 0 to work with');
         console.log(results[0]);
-        const splitResults1 = results[0].split('---');
-        console.log('Split results 1');
-        console.log(splitResults1[0]);
-        console.log('Split results 2');
-        console.log(splitResults1[0]);
+        //get more information from the flawInfo
+        //find the correct flaw info from json inout file
+        const resultsFile = fs_1.default.readFileSync(flawInfo.resultsFile, 'utf8');
+        const data = JSON.parse(resultsFile);
+        console.log('Reviewing issueID: ' + flawInfo.issuedID);
+        const resultArray = data.findings.find((issueId) => issueId.issue_id == flawInfo.issuedID);
+        const flawWED = resultArray.cwe_id;
+        const flawSeverity = resultArray.severity;
+        const issueType = resultArray.issue_type;
+        const display_text = resultArray.display_text;
+        const sourceFile = resultArray.files.source_file.file;
+        const sourceLine = resultArray.files.source_file.line;
+        const functionName = resultArray.files.source_file.function_name;
         //crete comment body
-        let commentBody = splitResults1[0];
+        let commentBody = '';
         commentBody = commentBody + '<pre>Veracode Fix - Fix Suggestions<br>';
+        commentBody = commentBody + 'Veracode STATIC Finding:<br>';
+        commentBody = commentBody + '--------------------------------<br>';
+        commentBody = commentBody + 'Issue ID: ' + flawInfo.issuedID + '<br>';
+        commentBody = commentBody + 'CWE ID: ' + flawWED + '<br>';
+        commentBody = commentBody + 'Severity: ' + flawSeverity + '<br>';
+        commentBody = commentBody + 'Issue Type: ' + issueType + '<br>';
+        commentBody = commentBody + 'Display Text: ' + display_text + '<br>';
+        commentBody = commentBody + 'Source File: ' + sourceFile + '<br>';
+        commentBody = commentBody + 'Source Line: ' + sourceLine + '<br>';
+        commentBody = commentBody + 'Function Name: ' + functionName + '<br>';
+        commentBody = commentBody + 'DIFF: ';
+        commentBody = commentBody + '--------------------------------<br>';
         commentBody = commentBody + results[0];
         commentBody = commentBody + '</pre>';
         console.log('Comment body');
@@ -43401,7 +43423,7 @@ function run() {
                     console.log(exampleFixResults);
                     if (options.prComment == 'true') {
                         console.log('PR Comment');
-                        const prComment = yield (0, create_pr_comment_1.createPRComment)(exampleFixResults, options);
+                        const prComment = yield (0, create_pr_comment_1.createPRComment)(exampleFixResults, options, initialFlawInfo);
                     }
                 }
                 else {

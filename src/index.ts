@@ -214,7 +214,7 @@ async function run() {
 
                 if (options.prComment == 'true'){
                     console.log('PR Comment')
-                    const prComment = await createPRComment(exampleFixResults, options)
+                    const prComment = await createPRComment(exampleFixResults, options, initialFlawInfo)
                 }
             }
             else {

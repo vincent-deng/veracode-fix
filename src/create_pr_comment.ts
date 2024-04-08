@@ -1,23 +1,42 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
+import fs from 'fs';
 
 
-export async function createPRComment(results:any, options:any){
+export async function createPRComment(results:any, options:any, flawInfo:any){
 
-    console.log('Results to work with')
-    console.log(results)
     console.log('Results 0 to work with')
     console.log(results[0])
 
-    const splitResults1 = results[0].split('---')
-    console.log('Split results 1')
-    console.log(splitResults1[0])
-    console.log('Split results 2')
-    console.log(splitResults1[0])
+    //get more information from the flawInfo
+    //find the correct flaw info from json inout file
+    const resultsFile = fs.readFileSync(flawInfo.resultsFile, 'utf8')
+    const data = JSON.parse(resultsFile)
+    console.log('Reviewing issueID: '+flawInfo.issuedID)
+    const resultArray = data.findings.find((issueId: any) => issueId.issue_id == flawInfo.issuedID)
+    const flawWED = resultArray.cwe_id
+    const flawSeverity = resultArray.severity
+    const issueType = resultArray.issue_type
+    const display_text = resultArray.display_text
+    const sourceFile = resultArray.files.source_file.file
+    const sourceLine = resultArray.files.source_file.line
+    const functionName = resultArray.files.source_file.function_name
 
     //crete comment body
-    let commentBody = splitResults1[0]
+    let commentBody = ''
     commentBody = commentBody+'<pre>Veracode Fix - Fix Suggestions<br>'
+    commentBody = commentBody+'Veracode STATIC Finding:<br>'
+    commentBody = commentBody+'--------------------------------<br>'
+    commentBody = commentBody+'Issue ID: '+flawInfo.issuedID+'<br>'
+    commentBody = commentBody+'CWE ID: '+flawWED+'<br>'
+    commentBody = commentBody+'Severity: '+flawSeverity+'<br>'
+    commentBody = commentBody+'Issue Type: '+issueType+'<br>'
+    commentBody = commentBody+'Display Text: '+display_text+'<br>'
+    commentBody = commentBody+'Source File: '+sourceFile+'<br>'
+    commentBody = commentBody+'Source Line: '+sourceLine+'<br>'
+    commentBody = commentBody+'Function Name: '+functionName+'<br>'
+    commentBody = commentBody+'DIFF: '
+    commentBody = commentBody+'--------------------------------<br>'
     commentBody = commentBody+results[0]
     commentBody = commentBody+'</pre>'
 
