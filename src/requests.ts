@@ -97,7 +97,12 @@ async function makeRequest(platform: any, projectId: any, options: any) {
 
 
     const response = await fetch(appUrl, { headers });
-    console.log(response);
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
     // .then(async response => {
     //     if (!response.ok) {
     //         throw new Error('Network response was not ok');

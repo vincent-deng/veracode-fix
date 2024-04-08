@@ -46273,7 +46273,12 @@ function makeRequest(platform, projectId, options) {
         const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
         //const response = await fetch(appUrl, { headers });
         const response = yield fetch(appUrl, { headers });
-        console.log(response);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = yield response.json();
+        console.log(data);
+        return data;
         // .then(async response => {
         //     if (!response.ok) {
         //         throw new Error('Network response was not ok');
