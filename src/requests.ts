@@ -64,7 +64,7 @@ export async function checkFix(platform: any, projectId: any, options: any) {
         const data = await makeRequest(platform, projectId, options);
         console.log('2======================================');
         console.log(`response data is: ${data}`);
-        if (data != 'not ready yet') {
+        if (data) {
             return data;
         }
         await new Promise(resolve => setTimeout(resolve, 10000));

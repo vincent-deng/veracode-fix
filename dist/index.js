@@ -46244,7 +46244,7 @@ function checkFix(platform, projectId, options) {
             const data = yield makeRequest(platform, projectId, options);
             console.log('2======================================');
             console.log(`response data is: ${data}`);
-            if (data != 'not ready yet') {
+            if (data) {
                 return data;
             }
             yield new Promise(resolve => setTimeout(resolve, 10000));
