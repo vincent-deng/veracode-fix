@@ -6,14 +6,19 @@ export async function createPRComment(results:any, options:any){
 
     console.log('Results to work with')
     console.log(results)
+    console.log('Results 0 to work with')
+    console.log(results[0])
 
     const splitResults1 = results[0].split('---')
+    console.log('Split results 1')
+    console.log(splitResults1[0])
+    console.log('Split results 2')
     console.log(splitResults1[0])
 
     //crete comment body
     let commentBody = splitResults1[0]
     commentBody = commentBody+'<pre>Veracode Fix - Fix Suggestions<br>'
-    commentBody = commentBody+splitResults1[0]
+    commentBody = commentBody+results[0]
     commentBody = commentBody+'</pre>'
 
     console.log('Comment body')
