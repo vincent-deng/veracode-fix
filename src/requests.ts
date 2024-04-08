@@ -59,7 +59,10 @@ export async function upload(platform: any, tar: any, options: any) {
 
 
 export async function checkFix(platform: any, projectId: any, options: any) {
-    await makeRequest(platform, projectId, options);
+    const data = await makeRequest(platform, projectId, options);
+    console.log('======================================');
+    console.log(data);
+    return data;
 }
 
 async function makeRequest(platform: any, projectId: any, options: any) {
@@ -101,12 +104,8 @@ async function makeRequest(platform: any, projectId: any, options: any) {
     console.log('====================================');
     console.log(response);
     const data = await response.text();
-    if (!data) makeRequest(platform, projectId, options);
-    else {
-        console.log('====================================');
-        console.log(data);
-        return data;
-    }
+    return data;
+
     // .then(async response => {
     //     if (!response.ok) {
     //         throw new Error('Network response was not ok');
