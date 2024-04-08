@@ -7,8 +7,14 @@ export async function createPRComment(results:any, options:any){
     console.log('Results to work with')
     console.log(results)
 
-    const splitResults1 = results[0].split('---')
+    const splitResults1 = results.split('---')
     console.log(splitResults1[0])
+
+    //crete comment body
+    let commentBody = splitResults1[0]
+    commentBody = commentBody+'<pre>Veracode Fix - Fix Suggestions<br>'
+    commentBody = commentBody+splitResults1[0]
+    commentBody = commentBody+'</pre>'
 
     core.info('check if we run on a pull request')
     let pullRequest = process.env.GITHUB_REF
@@ -23,7 +29,7 @@ export async function createPRComment(results:any, options:any){
         const repo = repository.split("/");
         const commentID:any = context.payload.pull_request?.number
 
-        const commentBody = '<pre>'+splitResults1[0]+'</pre>'
+        
 
         try {
             const octokit = github.getOctokit(token);
