@@ -93,13 +93,42 @@ async function makeRequest(platform:any, projectId:any, options:any) {
       };
 
     const appUrl = 'https://'+platform.apiUrl+'/fix/v1/project/'+projectId+'/results';
-    const response = await fetch(appUrl, { headers });
-    const data = await response;
-    console.log(data);
+    //const response = await fetch(appUrl, { headers });
+
+   
+    await fetch(appUrl, { headers })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          
+          // Parse as text
+          return response.text()
+        })
+        .then(async data => {
+          console.log('Response data:')
+          console.log(data);
+          if ( !data || data == ''){
+              console.log('Response is empty. Retrying in 10 seconds.');
+              console.log('Response:')
+              console.log(data);
+              await new Promise(resolve => setTimeout(resolve, 10000));
+              await makeRequest(platform, projectId, options);
+        } else {
+                console.log('Fixes fetched successfully');
+                console.log('Response:')
+                console.log(data);
+                return data;
+            }
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+        });
 
 
 
-    if (!data) {
+
+/*     if (!data || data.length == 0) {
         console.log('Response is empty. Retrying in 10 seconds.');
         console.log('Response:')
         console.log(data);
@@ -110,5 +139,5 @@ async function makeRequest(platform:any, projectId:any, options:any) {
         console.log('Response:')
         console.log(data);
         return data;
-    }
+    } */
 }

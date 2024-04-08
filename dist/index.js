@@ -43550,22 +43550,47 @@ function makeRequest(platform, projectId, options) {
             'Content-Type': 'application/json'
         };
         const appUrl = 'https://' + platform.apiUrl + '/fix/v1/project/' + projectId + '/results';
-        const response = yield fetch(appUrl, { headers });
-        const data = yield response;
-        console.log(data);
-        if (!data) {
-            console.log('Response is empty. Retrying in 10 seconds.');
-            console.log('Response:');
+        //const response = await fetch(appUrl, { headers });
+        yield fetch(appUrl, { headers })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Parse as text
+            return response.text();
+        })
+            .then((data) => __awaiter(this, void 0, void 0, function* () {
+            console.log('Response data:');
             console.log(data);
-            yield new Promise(resolve => setTimeout(resolve, 10000));
-            yield makeRequest(platform, projectId, options);
-        }
-        else {
-            console.log('Fixes fetched successfully');
-            console.log('Response:');
-            console.log(data);
-            return data;
-        }
+            if (!data || data == '') {
+                console.log('Response is empty. Retrying in 10 seconds.');
+                console.log('Response:');
+                console.log(data);
+                yield new Promise(resolve => setTimeout(resolve, 10000));
+                yield makeRequest(platform, projectId, options);
+            }
+            else {
+                console.log('Fixes fetched successfully');
+                console.log('Response:');
+                console.log(data);
+                return data;
+            }
+        }))
+            .catch(error => {
+            console.error('Fetch error:', error);
+        });
+        /*     if (!data || data.length == 0) {
+                console.log('Response is empty. Retrying in 10 seconds.');
+                console.log('Response:')
+                console.log(data);
+                await new Promise(resolve => setTimeout(resolve, 10000));
+                await makeRequest(platform, projectId, options);
+            } else {
+                console.log('Fixes fetched successfully');
+                console.log('Response:')
+                console.log(data);
+                return data;
+            } */
     });
 }
 
