@@ -7,7 +7,9 @@ import * as core from '@actions/core'
 import { checkCWE } from './check_cwe_support';
 import { createPRComment } from './create_pr_comment';
 
-// const artifactClient = new uploadArtifact.ArtifactClient();
+const artifact = require('@actions/artifact');
+const artifactClient = artifact.create();
+
 
 let credentials: any = {}
 
@@ -158,8 +160,6 @@ async function run() {
                 console.log('CWE ' + initialFlawInfo.cweID + ' is supported for ' + options.language)
                 const choosePlatform = await selectPlatfrom(credentials)
                 const tar = await createTar(initialFlawInfo, options)
-                const uploadArtifact = require('@actions/artifact');
-                const artifactClient = new uploadArtifact.ArtifactClient();
                 await artifactClient.uploadArtifact('my-artifact', 'data.tar.gz');
                 const uploadTar = await upload(choosePlatform, tar, options)
                 const checkFixResults = await checkFix(choosePlatform, uploadTar, options)
