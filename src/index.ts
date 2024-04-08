@@ -210,8 +210,7 @@ async function run() {
                 //     ` \t\t\t\tString formatString = "Username '" + username + "' has password: %.2s%s";\n`
                 // ]
 
-                console.log('Fix results:')
-                console.log(checkFixResults)
+                console.log(`Fix results: ${checkFixResults}`)
 
                 if (options.prComment == 'true') {
                     console.log('PR Comment')

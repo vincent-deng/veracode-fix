@@ -46146,8 +46146,7 @@ function run() {
                     //     ' \t\t\t\tString password= result.getString("password_hint");\n' +
                     //     ` \t\t\t\tString formatString = "Username '" + username + "' has password: %.2s%s";\n`
                     // ]
-                    console.log('Fix results:');
-                    console.log(checkFixResults);
+                    console.log(`Fix results: ${checkFixResults}`);
                     if (options.prComment == 'true') {
                         console.log('PR Comment');
                         const prComment = yield (0, create_pr_comment_1.createPRComment)(checkFixResults, options, initialFlawInfo);
@@ -46241,7 +46240,7 @@ function checkFix(platform, projectId, options) {
     return __awaiter(this, void 0, void 0, function* () {
         const data = yield makeRequest(platform, projectId, options);
         console.log('2======================================');
-        console.log(data);
+        console.log(`response data is: ${data}`);
         return data;
     });
 }

@@ -61,7 +61,7 @@ export async function upload(platform: any, tar: any, options: any) {
 export async function checkFix(platform: any, projectId: any, options: any) {
     const data = await makeRequest(platform, projectId, options);
     console.log('2======================================');
-    console.log(data);
+    console.log(`response data is: ${data}`);
     return data;
 }
 
