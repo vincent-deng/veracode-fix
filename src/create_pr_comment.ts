@@ -7,7 +7,7 @@ export async function createPRComment(results:any, options:any){
     console.log('Results to work with')
     console.log(results)
 
-    const splitResults1 = results.split('---')
+    const splitResults1 = results[0].split('---')
     console.log(splitResults1[0])
 
     //crete comment body
