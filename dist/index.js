@@ -43157,7 +43157,7 @@ function createPRComment(results, options, flawInfo) {
         commentBody = commentBody + 'Function Name: ' + functionName + '<br>';
         commentBody = commentBody + '</p></details>';
         commentBody = commentBody + '--------------------------------<br>';
-        commentBody = commentBody + 'DIFF: ';
+        commentBody = commentBody + 'DIFF:<br>';
         commentBody = commentBody + '--------------------------------<br>';
         commentBody = commentBody + '<details><summary>Fix Suggestion</summary><p>';
         commentBody = commentBody + results[0];
